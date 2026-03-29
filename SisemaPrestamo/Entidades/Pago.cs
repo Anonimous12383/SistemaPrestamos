@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SisemaPrestamo.Models;
+using System;
 
 namespace PrestamosApp.Entidades
 {

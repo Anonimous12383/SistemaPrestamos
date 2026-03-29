@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SisemaPrestamo.Models;
+using System.Collections.Generic;
 
 namespace PrestamosApp.Entidades
 {

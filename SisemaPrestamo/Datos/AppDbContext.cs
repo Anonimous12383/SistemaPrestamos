@@ -1,5 +1,6 @@
 ﻿using PrestamosApp.Entidades;
 using System.Data.Entity;
+using SisemaPrestamo.Models;
 
 namespace PrestamosApp.Datos
 {
