@@ -1,14 +1,15 @@
-﻿using SisemaPrestamo.Models;
-using System;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PrestamosApp.Entidades
 {
+    [Table("Pagos")]
     public class Pago
     {
         public int PagoId { get; set; }
         public int PrestamoId { get; set; }
         public int NumeroCuota { get; set; }
-        public DateTime? FechaPago { get; set; }
+        public DateTime FechaPago { get; set; }
         public decimal MontoAnterior { get; set; }
         public decimal InteresPagado { get; set; }
         public decimal CapitalPagado { get; set; }

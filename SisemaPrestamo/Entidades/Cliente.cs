@@ -1,8 +1,9 @@
-﻿using SisemaPrestamo.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PrestamosApp.Entidades
 {
+    [Table("Clientes")]
     public class Cliente
     {
         public int ClienteId { get; set; }
@@ -11,9 +12,10 @@ namespace PrestamosApp.Entidades
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public string Garantia { get; set; }
-        public decimal Sueldo { get; set; }
-        public bool Activo { get; set; }
+        public decimal SueldoMensual { get; set; }
 
         public virtual ICollection<Prestamo> Prestamos { get; set; }
+        public object Activo { get; internal set; }
+        public object Sueldo { get; internal set; }
     }
 }

@@ -1,3 +1,35 @@
+USE PrestamosDB;
+GO
+
+DROP TABLE IF EXISTS Pagos;
+GO
+
+CREATE TABLE Pagos (
+    PagoId INT IDENTITY(1,1) PRIMARY KEY,
+    PrestamoId INT NOT NULL,
+    NumeroCuota INT NOT NULL,
+    FechaPago DATETIME NOT NULL,
+    MontoAnterior DECIMAL(18,2) NOT NULL,
+    InteresPagado DECIMAL(18,2) NOT NULL,
+    CapitalPagado DECIMAL(18,2) NOT NULL,
+    Cuota DECIMAL(18,2) NOT NULL,
+    Mora DECIMAL(18,2) NOT NULL DEFAULT 0,
+    NuevoMontoDeuda DECIMAL(18,2) NOT NULL,
+    MesesRestantes INT NOT NULL,
+    TotalInteresesAcumulados DECIMAL(18,2) NOT NULL,
+    TasaPrestamo DECIMAL(10,2) NOT NULL,
+    FuePagado BIT NOT NULL,
+
+    CONSTRAINT FK_Pagos_Prestamos
+    FOREIGN KEY (PrestamoId)
+    REFERENCES Prestamos(PrestamoId)
+);
+GO
+
+SELECT * FROM Prestamos;
+
+
+
 CREATE DATABASE PrestamosDB;
 GO
 
@@ -61,7 +93,7 @@ INSERT INTO FondoEmpresa (MontoDisponible)
 VALUES (10000000.00);
 GO
 
-INSERT INTO Clientes (NombreCompleto, Correo, Telefono, Direccion, Garantia, Sueldo)
+INSERT INTO Clientes (NombreCompleto, Correo, Telefono, Direccion, Garantia, SueldoMensual)
 VALUES
 ('Juan Pérez', 'juan@gmail.com', '809-111-1111', 'Santo Domingo', 'Motor', 25000),
 ('Ana Rodríguez', 'ana@gmail.com', '809-222-2222', 'Santo Domingo Oeste', 'Televisor', 30000),
@@ -69,5 +101,25 @@ VALUES
 ('Carlos Díaz', 'carlos@gmail.com', '809-444-4444', 'Los Alcarrizos', 'Laptop', 22000),
 ('Marta López', 'marta@gmail.com', '809-555-5555', 'Villa Mella', 'Solar', 40000),
 ('Pedro Sánchez', 'pedro@gmail.com', '809-666-6666', 'San Cristóbal', 'Carro', 45000);
-GO
+
+INSERT INTO Prestamos (
+    ClienteId,
+    Capital,
+    PlazoMeses,
+    TasaAnual,
+    Cuota,
+    FechaInicio,
+    Estado,
+    SaldoPendiente
+)
+VALUES (
+    4,
+    100000,
+    12,
+    10,
+    9000,
+    GETDATE(),
+    'ACTIVO',
+    100000
+);
 

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PrestamosApp;
+using PrestamosApp.Reportes;
+using REPORTES.Reportes;
 
 namespace SisemaPrestamo
 {
@@ -16,7 +16,7 @@ namespace SisemaPrestamo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmPrincipal());
         }
     }
 }
